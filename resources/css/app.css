@@ -2,19 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS tambahan */
-@layer components {
-  .btn-primary {
-    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
-  }
-  
-  .card {
-    @apply bg-white shadow-md rounded-lg p-6;
+@layer base {
+  body {
+    @apply bg-dark-primary text-text-medium antialiased;
   }
 }
 
+/* Tambahkan kode di bawah ini */
 @layer utilities {
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Sembunyikan panah di input angka untuk Chrome, Safari, Edge, Opera */
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Sembunyikan panah di input angka untuk Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
   }
 }

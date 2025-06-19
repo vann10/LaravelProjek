@@ -3,17 +3,25 @@ export default {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./resources/**/*.vue",
-    "./resources/**/*.ts",
-    "./resources/**/*.jsx",
-    "./resources/**/*.tsx",
   ],
   theme: {
     extend: {
-      // Custom theme di sini
       colors: {
-        primary: '#1f2937',
-        secondary: '#6b7280',
+        // Palet Warna Utama
+        'dark-primary': '#101828', // Latar belakang utama yang sangat gelap
+        'dark-secondary': '#1D2939', // Warna untuk card dan elemen sekunder
+        'dark-tertiary': '#344054', // Warna untuk border, garis pemisah
+
+        // Palet Warna Aksen
+        'accent-blue': '#3B82F6', // Biru untuk tombol utama, link, dan focus
+        'accent-blue-hover': '#2563EB',
+        'accent-gold': '#FBBF24', // Emas untuk highlight, angka penting, dan ikon
+        'accent-gold-hover': '#F59E0B',
+
+        // Warna Teks
+        'text-light': '#F9FAFB', // Teks utama yang terang
+        'text-medium': '#D1D5DB', // Teks sekunder
+        'text-dark': '#6B7280',   // Teks hint atau placeholder
       },
       fontFamily: {
         'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
@@ -21,8 +29,6 @@ export default {
     },
   },
   plugins: [
-    // Plugin tambahan jika diperlukan
-    // require('@tailwindcss/forms'),
-    // require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
   ],
 }
