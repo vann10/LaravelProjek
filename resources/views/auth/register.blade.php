@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="antialiased">
-    <div class="relative min-h-screen bg-dark-primary flex">
+    <div class="relative h-screen overflow-hidden bg-dark-primary flex">
         <div class="hidden md:block md:w-1/2 bg-dark-secondary">
-            <img src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+            <img src="https://images.pexels.com/photos/5909813/pexels-photo-5909813.jpeg?_gl=1*1vndhvl*_ga*NDc3MzExMjA0LjE3NDIyODc3OTM.*_ga_8JE65Q40S6*czE3NTA0MjEwMTgkbzgkZzEkdDE3NTA0MjI1MTEkajkkbDAkaDA." 
                  alt="Collaboration" class="w-full h-full object-cover">
                  </div>
 
