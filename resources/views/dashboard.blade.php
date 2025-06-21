@@ -5,7 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    {{-- TAMBAHKAN x-data di sini --}}
+    <div class="py-12" x-data="{ deleteUrl: '' }">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if (session('success'))
                 <div class="bg-green-500/10 border border-green-500/30 text-green-300 px-4 py-3 rounded-lg relative mb-6" role="alert">
@@ -61,11 +62,14 @@
                                         <td class="py-4 px-4 text-center text-sm font-medium">
                                             <div class="flex items-center justify-center space-x-4">
                                                 <a href="{{ route('transactions.edit', $transaction) }}" class="text-accent-blue hover:text-accent-blue-hover transition-colors duration-200">Edit</a>
-                                                <form action="{{ route('transactions.destroy', $transaction) }}" method="POST" class="inline-block" onsubmit="return confirm('Anda yakin ingin menghapus transaksi ini?');">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="text-red-500 hover:text-red-700 transition-colors duration-200">Hapus</button>
-                                                </form>
+                                                
+                                                {{-- UBAH BAGIAN INI --}}
+                                                <button
+                                                    x-on:click.prevent="deleteUrl = '{{ route('transactions.destroy', $transaction) }}'; $dispatch('open-modal', 'confirm-transaction-deletion')"
+                                                    class="text-red-500 hover:text-red-700 transition-colors duration-200">
+                                                    Hapus
+                                                </button>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -85,5 +89,32 @@
                 </div>
             </div>
         </div>
+
+        {{-- TAMBAHKAN MODAL DI SINI --}}
+        <x-modal name="confirm-transaction-deletion" focusable>
+            <form method="post" x-bind:action="deleteUrl" class="p-6 bg-dark-secondary border border-dark-tertiary rounded-lg">
+                @csrf
+                @method('delete')
+
+                <h2 class="text-lg font-medium text-text-light">
+                    Apakah Anda yakin ingin menghapus transaksi ini?
+                </h2>
+
+                <p class="mt-1 text-sm text-text-dark">
+                    Setelah transaksi ini dihapus, data akan hilang secara permanen.
+                </p>
+
+                <div class="mt-6 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        Batal
+                    </x-secondary-button>
+
+                    <x-danger-button class="ms-3">
+                        Hapus Transaksi
+                    </x-danger-button>
+                </div>
+            </form>
+        </x-modal>
+
     </div>
 </x-app-layout>
